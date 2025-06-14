@@ -1,4 +1,3 @@
-import React from "react";
 import React from 'react';
 import { motion } from 'framer-motion';
 import Stack from './Stack';
@@ -22,7 +21,17 @@ function App() {
     <div className="main-landing">
       <VideoBackground />
       <div className="content-wrapper">
-        <header className="header">
+        <header className="header" style={{
+          position: 'fixed',
+          top: '0',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '600px',
+          maxWidth: '800px',
+          textAlign: 'center',
+          zIndex: 10,
+          padding: '10px 0 20px'
+        }}>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,46 +82,35 @@ function App() {
             </motion.a>
           </motion.div>
         </header>
-        <div className="screenshots-container">
+        <div className="screenshots-container" style={{
+          width: '900px',
+          position: 'absolute',
+          right: '10%',
+          top: '60%',
+          transform: 'translateY(-50%)',
+          maxWidth: '1000px',
+          zIndex: 1
+        }}>
           <Stack direction="horizontal" gap={24} wrap randomRotation={true} cardDimensions={{ width: 400, height: 400 }} animationConfig={{ stiffness: 200, damping: 20 }}>
             {screenshots.map((shot, idx) => (
-              <div key={idx} className="screenshot-card">
-                <img src={shot.src} alt={shot.alt} style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 12, background: "#222" }} />
-                <div style={{marginTop: 8, fontWeight: 500}}>{shot.alt}</div>
+              <div key={idx} className="screenshot-card" style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                backgroundColor: '#222'
+              }}>
+                <img src={shot.src} alt={shot.alt} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                <div style={{
+                  marginTop: '8px',
+                  fontWeight: '500',
+                  color: '#fff',
+                  textAlign: 'center'
+                }}>{shot.alt}</div>
               </div>
             ))}
           </Stack>
         </div>
-      </div>
-    </div>
-  );
-          <Stack
-            direction="horizontal"
-            gap={24}
-            wrap
-            randomRotation={true}
-            cardDimensions={{ width: 400, height: 400 }}
-            animationConfig={{ stiffness: 200, damping: 20 }}
-          >
-            {screenshots.map((shot, idx) => (
-              <div key={idx} className="screenshot-card">
-                <img
-                  src={shot.src}
-                  alt={shot.alt}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    borderRadius: 12,
-                    background: "#222",
-                  }}
-                />
-                <div style={{marginTop: 8, fontWeight: 500}}>{shot.alt}</div>
-              </div>
-            ))}
-          </Stack>
-        </div>
-
       </div>
     </div>
   );

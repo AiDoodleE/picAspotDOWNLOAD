@@ -15,5 +15,5 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "framework": "react"
+  "framework": "create-react-app"
 }
